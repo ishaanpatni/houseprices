@@ -128,9 +128,9 @@ class GraphTheory:
         data = []
         for i in range(self.graph.vertices):
             print(i)
-            data.append({'name': self.headers[i], 'avg. time': sum([self.dijkstra(self.headers[i], self.headers[j])[2] for j in range(self.graph.vertices)]) / self.graph.vertices})
+            data.append({'name': self.headers[i], 'avg. time': round(sum([self.dijkstra(self.headers[i], self.headers[j])[2] for j in range(self.graph.vertices)]) / self.graph.vertices, 1)})
 
-        with open('avg_times.csv', 'w') as file:
+        with open('avg_times.csv', 'w', newline='') as file:
             writer = csv.DictWriter(file, fieldnames=data[0].keys())
             writer.writeheader()
             writer.writerows(data)
